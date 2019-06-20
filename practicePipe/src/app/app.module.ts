@@ -1,20 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos.component';
-import { FilterTodosPipe } from './filter-todos.pipe';
+import { Pipe1Pipe } from './pipe1.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodosComponent,
-    FilterTodosPipe
+    Pipe1Pipe
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

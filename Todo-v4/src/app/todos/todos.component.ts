@@ -18,9 +18,9 @@ import { Todo } from '../todo.interface';
     </ul>
 
     <ul class="todos">
-      <li *ngFor="let todo of todos" [id]="todo.id" class="todo-item">
+      <li *ngFor="let todo of (todos | filterTodos: status)" [id]="todo.id" class="todo-item">
       <input class="custom-checkbox" type="checkbox" [id]="'ck-'+todo.id" [checked]="todo.completed" (change)="toggleTodo(todo.id)">
-        <label [attr.for]="'ck-'+todo.id">{{todo.content}}</label>
+        <label [for]="'ck-'+todo.id">{{todo.content}}</label>
         <i class="remove-todo far fa-times-circle"
         (click)="removeTodo(todo.id)"></i>
       </li>
@@ -238,7 +238,6 @@ export class TodosComponent {
     { id: 2, content: 'CSS', completed: true },
     { id: 3, content: 'Javascript', completed: false }
   ];
-  copied: Todo[] = [];
 
   status = 'all';
   content: string;
