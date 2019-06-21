@@ -1,43 +1,43 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo.interface';
 
 @Component({
-  selector: 'app-todos',
+  selector: 'app-teacher-todo',
   template: `
   <div class="container">
-    <h1 class="title">Todos</h1>
-    <div class="ver">4.0</div>
+  <h1 class="title">Todos</h1>
+  <div class="ver">4.0</div>
 
-    <input class="input-todo" placeholder="What needs to be done?" autofocus
-    (keyup.enter)="addTodo()"
-    [(ngModel)]="content">
-    <ul class="nav" (click)="clickNav($event)">
-      <li id="all" [class.active]="'all' === status">All</li>
-      <li id="active" [class.active]="'active' === status">Active</li>
-      <li id="completed" [class.active]="'completed' === status">Completed</li>
-    </ul>
+  <input class="input-todo" placeholder="What needs to be done?" autofocus
+  (keyup.enter)="addTodo(input.value)" #input>
 
-    <ul class="todos">
-      <li *ngFor="let todo of (todos | filterTodos: status)" [id]="todo.id" class="todo-item">
-      <input class="custom-checkbox" type="checkbox" [id]="'ck-'+todo.id" [checked]="todo.completed" (change)="toggleTodo(todo.id)">
-        <label [for]="'ck-'+todo.id">{{todo.content}}</label>
-        <i class="remove-todo far fa-times-circle"
-        (click)="removeTodo(todo.id)"></i>
-      </li>
-    </ul>
-    <div class="footer">
-      <div class="complete-all">
-        <input class="custom-checkbox" type="checkbox" id="ck-complete-all"
-        (change)="checkAll($event)">
-        <label for="ck-complete-all">Mark all as complete</label>
-      </div>
-      <div class="clear-completed">
-        <button class="btn" (click)="clearCompleted()">Clear completed (<span class="completed-todos">{{completedItems}}</span>)</button>
-        <strong class="active-todos">{{leftItems}}</strong> items left
-      </div>
+  <ul class="nav">
+    <li *ngFor="let navItem of navItems" [class.active]="navItem === navState"
+    (click)="navState = navItem">{{navItem}}</li>
+  </ul>
+
+  <ul class="todos" *ngIf="todos; else loading">
+    <li *ngFor="let todo of todos | todosFilter: navState" class="todo-item">
+      <input class="custom-checkbox" type="checkbox" id="ck-{{todo.id}}"
+      [checked]="todo.completed">
+      <label for="ck-{{todo.id}}">{{todo.content}}</label>
+      <i class="remove-todo far fa-times-circle"></i>
+    </li>
+  </ul>
+  <ng-template #loading>loading...</ng-template>
+
+  <div class="footer">
+    <div class="complete-all">
+      <input class="custom-checkbox" type="checkbox" id="ck-complete-all">
+      <label for="ck-complete-all">Mark all as complete</label>
+    </div>
+    <div class="clear-completed">
+      <button class="btn">Clear completed (<span class="completed-todos">0</span>)</button>
+      <strong class="active-todos">0</strong> items left
     </div>
   </div>
-  <pre>{{todos | json}}</pre>
+</div>
+{{todos | json}}
   `,
   styles: [`
   .container {
@@ -46,7 +46,7 @@ import { Todo } from '../todo.interface';
     margin: 0 auto;
     padding: 15px;
   }
-
+  
   .title {
     /* margin: 10px 0; */
     font-size: 4.5em;
@@ -54,14 +54,14 @@ import { Todo } from '../todo.interface';
     text-align: center;
     color: #23b7e5;
   }
-
+  
   .ver {
     font-weight: 100;
     text-align: center;
     color: #23b7e5;
     margin-bottom: 30px;
   }
-
+  
   /* .input-todo  */
   .input-todo {
     display: block;
@@ -77,38 +77,36 @@ import { Todo } from '../todo.interface';
     outline: none;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   }
-
+  
   .input-todo:focus {
     border-color: #23b7e5;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
   }
-
+  
   .input-todo::-webkit-input-placeholder {
     color: #999;
   }
-
+  
   /* .nav */
   .nav {
     display: flex;
     margin: 15px;
     list-style: none;
   }
-
+  
   .nav > li {
     padding: 4px 10px;
     border-radius: 4px;
     cursor: pointer;
   }
-
+  
   .nav > li.active {
     color: #fff;
     background-color: #23b7e5;
   }
-
-  .todos {
-    margin-top: 20px;
-  }
-
+  
+  .todo-list {}
+  
   /* .todo-item */
   .todo-item {
     position: relative;
@@ -121,7 +119,7 @@ import { Todo } from '../todo.interface';
     border-color: #e7ecee;
     list-style: none;
   }
-
+  
   .todo-item:first-child {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -130,20 +128,20 @@ import { Todo } from '../todo.interface';
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
   }
-
+  
   /*
     .custom-checkbox
     custom-checkbox 바로 뒤에 위치한 label의 before와 after를 사용해
     custom-checkbox의 외부 박스와 내부 박스를 생성한다.
-
+  
     <input class="custom-checkbox" type="checkbox" id="myId">
     <label for="myId">Content</label>
   */
-
+  
   .custom-checkbox {
     display: none;
   }
-
+  
   .custom-checkbox + label {
     position: absolute; /* 부모 위치를 기준으로 */
     top: 50%;
@@ -156,7 +154,7 @@ import { Todo } from '../todo.interface';
     cursor: pointer;
     user-select: none;
   }
-
+  
   .custom-checkbox + label:before {
     content: "";
     position: absolute;
@@ -168,7 +166,7 @@ import { Todo } from '../todo.interface';
     background-color: #fff;
     border: 1px solid #cfdadd;
   }
-
+  
   .custom-checkbox:checked + label:after {
     content: "";
     position: absolute;
@@ -179,7 +177,7 @@ import { Todo } from '../todo.interface';
     height: 10px;
     background-color: #23b7e5;
   }
-
+  
   /* .remove-todo button */
   .remove-todo {
     display: none;
@@ -189,28 +187,28 @@ import { Todo } from '../todo.interface';
     cursor: pointer;
     transform: translate3d(0, -50%, 0);
   }
-
+  
   /* todo-item이 호버 상태이면 삭제 버튼을 활성화 */
   .todo-item:hover > .remove-todo {
     display: block;
   }
-
+  
   .footer {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
   }
-
+  
   .complete-all, .clear-completed {
     position: relative;
     flex-basis: 50%;
   }
-
+  
   .clear-completed {
     text-align: right;
     padding-right: 15px;
   }
-
+  
   .btn {
     padding: 1px 5px;
     font-size: .8em;
@@ -222,82 +220,36 @@ import { Todo } from '../todo.interface';
     border-color: #ccc;
     cursor: pointer;
   }
-
+  
   .btn:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad;
-  }
-  `]
+  }`]
 })
+export class TeacherTodoComponent implements OnInit {
 
-export class TodosComponent implements OnInit, DoCheck{
+  todos: Todo[];
 
-  todos: Todo[] = [
-    { id: 1, content: 'HTML', completed: true },
-    { id: 2, content: 'CSS', completed: true },
-    { id: 3, content: 'Javascript', completed: false }
-  ];
+  navItems: NavItem[] = ['All', 'Active', 'Completed'];
+  navState: NavItem = 'All';
 
-  status = 'all';
-  content: string;
-  leftItems: number;
-  completedItems: number;
+  constructor() {
+    this.getTodos();
+   }
 
-  ngOnInit(): void {
-    this.countItems();
+  ngOnInit() {
   }
 
-  ngDoCheck(): void {
-    this.countItems();
+  getTodos() {
+    setTimeout(() => this.todos = [
+      { id: 1, content: 'HTML', completed: false },
+      { id: 2, content: 'CSS', completed: true },
+      { id: 3, content: 'Javascript', completed: false }
+    ], 1000);
   }
 
-  countItems() {
-    this.leftItems = this.todos.filter(todo => !todo.completed).length;
-    this.completedItems = this.todos.filter(todo => todo.completed).length;
-  }
-
-
-  generateId(): number {
-    return this.todos.length ? Math.max(...this.todos.map(todo => todo.id)) + 1 : 1 ;
-  }
-
-  addTodo(): void {
-    if (!this.content.trim()) {
-      this.content = '';
-      return;
-    }
-    this.todos = [{ id: this.generateId(), content: this.content, completed: false }, ...this.todos];
-    this.content = '';
-
-  }
-
-  toggleTodo(id: number): void {
-    this.todos = this.todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo);
-
-  }
-
-  removeTodo(id: number): void {
-    this.todos = this.todos.filter(todo => todo.id !== id);
-
-  }
-
-  checkAll(e) {
-    if (e.target.checked) {
-      this.todos = this.todos.map(todo => ({...todo, completed: true}));
-    } else {
-      this.todos = this.todos.map(todo => ({...todo, completed: false}));
-    }
-
-  }
-
-  clearCompleted() {
-    this.todos = this.todos.filter(todo => !todo.completed);
-
-  }
-
-  clickNav(e) {
-    if (e.target.nodeName !== 'LI') {return; }
-    this.status = e.target.id;
+  addTodo(content: string) {
+    this.todos = [{ id: 100, content, completed: false}, ...this.todos];
   }
 }
