@@ -30,7 +30,7 @@ import { Component, OnInit } from '@angular/core';
     overflow: hidden;
     background: #111;
   }
-  
+
   .spinner {
     position: absolute;
     top: 50%;
@@ -42,7 +42,7 @@ import { Component, OnInit } from '@angular/core';
     animation-iteration-count: infinite;
     animation-timing-function: ease;
   }
-  
+
   i {
     box-sizing: border-box;
     display: block;
@@ -60,7 +60,7 @@ import { Component, OnInit } from '@angular/core';
     animation-iteration-count: infinite;
     animation-timing-function: ease;
   }
-  
+
   i:nth-child(1) {
     width: 14px;
     height: 14px;
@@ -71,7 +71,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.1s;
   }
-  
+
   i:nth-child(2) {
     width: 28px;
     height: 28px;
@@ -82,7 +82,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.2s;
   }
-  
+
   i:nth-child(3) {
     width: 42px;
     height: 42px;
@@ -93,7 +93,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.3s;
   }
-  
+
   i:nth-child(4) {
     width: 56px;
     height: 56px;
@@ -104,7 +104,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.4s;
   }
-  
+
   i:nth-child(5) {
     width: 70px;
     height: 70px;
@@ -115,7 +115,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.5s;
   }
-  
+
   i:nth-child(6) {
     width: 84px;
     height: 84px;
@@ -126,7 +126,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.6s;
   }
-  
+
   i:nth-child(7) {
     width: 98px;
     height: 98px;
@@ -137,7 +137,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.7s;
   }
-  
+
   i:nth-child(8) {
     width: 112px;
     height: 112px;
@@ -148,7 +148,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.8s;
   }
-  
+
   i:nth-child(9) {
     width: 126px;
     height: 126px;
@@ -159,7 +159,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 0.9s;
   }
-  
+
   i:nth-child(10) {
     width: 140px;
     height: 140px;
@@ -170,7 +170,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1s;
   }
-  
+
   i:nth-child(11) {
     width: 154px;
     height: 154px;
@@ -181,7 +181,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.1s;
   }
-  
+
   i:nth-child(12) {
     width: 168px;
     height: 168px;
@@ -192,7 +192,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.2s;
   }
-  
+
   i:nth-child(13) {
     width: 182px;
     height: 182px;
@@ -203,7 +203,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.3s;
   }
-  
+
   i:nth-child(14) {
     width: 196px;
     height: 196px;
@@ -214,7 +214,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.4s;
   }
-  
+
   i:nth-child(15) {
     width: 210px;
     height: 210px;
@@ -225,7 +225,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.5s;
   }
-  
+
   i:nth-child(16) {
     width: 224px;
     height: 224px;
@@ -236,7 +236,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.6s;
   }
-  
+
   i:nth-child(17) {
     width: 238px;
     height: 238px;
@@ -247,7 +247,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.7s;
   }
-  
+
   i:nth-child(18) {
     width: 252px;
     height: 252px;
@@ -258,7 +258,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.8s;
   }
-  
+
   i:nth-child(19) {
     width: 266px;
     height: 266px;
@@ -269,7 +269,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 1.9s;
   }
-  
+
   i:nth-child(20) {
     width: 280px;
     height: 280px;
@@ -280,7 +280,7 @@ import { Component, OnInit } from '@angular/core';
     transform-origin: 50% 50%;
     animation-delay: 2s;
   }
-  
+
   @keyframes spin {
     40% {
       border-radius: 50px;
