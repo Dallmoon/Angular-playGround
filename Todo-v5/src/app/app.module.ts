@@ -10,6 +10,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFooterComponent } from './todo-footer/todo-footer.component';
 import { FilterTodoPipe } from './filter-todo.pipe';
 import { TodoSpinnerComponent } from './todo-spinner/todo-spinner.component';
+import { TodoFooterTeacherComponent } from './todo-footer-teacher/todo-footer-teacher.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TodoSpinnerComponent } from './todo-spinner/todo-spinner.component';
     TodoListComponent,
     TodoFooterComponent,
     FilterTodoPipe,
-    TodoSpinnerComponent
+    TodoSpinnerComponent,
+    TodoFooterTeacherComponent
   ],
   imports: [
     BrowserModule,

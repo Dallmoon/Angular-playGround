@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Todo } from '../todo.interface';
 
 @Component({
@@ -18,7 +18,8 @@ import { Todo } from '../todo.interface';
     </ul>
 
     <ul class="todos">
-      <li *ngFor="let todo of (todos | filterTodos: status)" [id]="todo.id" class="todo-item">
+      <li *ngFor="let todo of (todos | filterTodos
+        : status)" [id]="todo.id" class="todo-item">
       <input class="custom-checkbox" type="checkbox" [id]="'ck-'+todo.id" [checked]="todo.completed" (change)="toggleTodo(todo.id)">
         <label [for]="'ck-'+todo.id">{{todo.content}}</label>
         <i class="remove-todo far fa-times-circle"
@@ -138,7 +139,8 @@ import { Todo } from '../todo.interface';
 
     <input class="custom-checkbox" type="checkbox" id="myId">
     <label for="myId">Content</label>
-  */
+
+    */
 
   .custom-checkbox {
     display: none;

@@ -65,8 +65,8 @@ import { NavItem } from '../navItem.type';
 export class TodoListComponent implements OnInit {
   @Input() todos: Todo[];
   @Input() navState: NavItem;
-  @Output() remove = new EventEmitter();
-  @Output() check = new EventEmitter();
+  @Output() remove = new EventEmitter<number>();
+  @Output() check = new EventEmitter<number>();
 
   constructor() { }
 

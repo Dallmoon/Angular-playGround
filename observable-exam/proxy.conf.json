@@ -1,0 +1,1 @@
+{ "/api": { "target": "https://api.binance.com/api/v1/ticker/24hr", "secure": false } }

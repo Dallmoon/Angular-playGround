@@ -53,7 +53,6 @@ export class TodoContainerComponent implements OnInit, DoCheck {
 
   constructor() {
     this.getTodos();
-    console.log(this.countItems());
    }
 
   ngOnInit() {
