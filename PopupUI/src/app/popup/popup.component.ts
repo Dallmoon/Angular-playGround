@@ -7,8 +7,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     <h1>JavaScript Popup</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
     <button class="btn-close" (click)="hidePopup.emit()">X</button>
-    <input type="text" #input>
-    <button class="btn-ok" (click)="hidePopup.emit(input.value)">OK</button>
+    <input type="text" [(ngModel)]="content">
+    <button class="btn-ok" (click)="inputEvent()">OK</button>
     <button class="btn-cancel" (click)="hidePopup.emit()">Cancel</button>
   </div>
   <div class="overlay" (click)="hidePopup.emit()" [class.active]="status"></div>
@@ -51,10 +51,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class PopupComponent implements OnInit {
   @Input() status: boolean;
   @Output() hidePopup = new EventEmitter();
+  @Output() inputContent = new EventEmitter();
 
+  content: string;
   constructor() { }
 
   ngOnInit() {
-    
+
+  }
+  inputEvent() {
+    this.inputContent.emit(this.content);
+    this.content = '';
   }
 }

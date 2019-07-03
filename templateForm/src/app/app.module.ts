@@ -3,16 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { PopupComponent } from './popup/popup.component';
-import { PopupContainerComponent } from './popup-container/popup-container.component';
-import { PopupMainComponent } from './popup-main/popup-main.component';
+import { FormContainerComponent } from './form-container/form-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PopupComponent,
-    PopupContainerComponent,
-    PopupMainComponent
+    FormContainerComponent
   ],
   imports: [
     BrowserModule,

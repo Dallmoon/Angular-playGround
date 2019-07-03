@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-popup-container',
   template: `
   <app-popup-main (showPopup)="showPopup()" [formContent]="formContent"></app-popup-main>
-  <app-popup [status]="status" (hidePopup)="hidePopup($event)"></app-popup>
+  <app-popup [status]="status" (hidePopup)="hidePopup()" (inputContent)="inputContent($event)"></app-popup>
   `,
   styles: []
 })
@@ -19,10 +19,14 @@ export class PopupContainerComponent implements OnInit {
   showPopup() {
     this.status = true;
   }
-  hidePopup(formContent) {
+
+  hidePopup() {
     this.status = false;
-    if (formContent) {
-      this.formContent = formContent;
-    }
+  }
+
+  inputContent(formContent: string) {
+    if (!formContent.trim()) { return; }
+    this.formContent = formContent.trim();
+    this.hidePopup();
   }
 }
