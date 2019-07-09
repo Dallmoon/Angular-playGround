@@ -13,6 +13,7 @@ import { TodoFooterComponent } from './viewComponents/todo-footer/todo-footer.co
 import { TodoSpinnerComponent } from './viewComponents/todo-spinner/todo-spinner.component';
 
 import { FilterTodoPipe } from './pipes/filter-todo.pipe';
+import { PipePraticePipe } from './pipe-pratice.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FilterTodoPipe } from './pipes/filter-todo.pipe';
     TodoFooterComponent,
     FilterTodoPipe,
     TodoSpinnerComponent,
+    PipePraticePipe,
   ],
   imports: [
     BrowserModule,
