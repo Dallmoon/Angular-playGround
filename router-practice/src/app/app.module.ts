@@ -1,12 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { IndexComponent } from './components/index.component';
 import { ServiceComponent } from './components/service.component';
 import { AboutComponent } from './components/about.component';
 import { NavigationComponent } from './components/navigation.component';
+import { NotFoundComponent } from './components/not-found.component';
+import { SignInComponent } from './components/sign-in.component';
+import { SignUpComponent } from './components/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,15 @@ import { NavigationComponent } from './components/navigation.component';
     IndexComponent,
     ServiceComponent,
     AboutComponent,
-    NavigationComponent
+    NavigationComponent,
+    NotFoundComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
