@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
-import { TodoService } from '../../../core/services/todo.service';
+import { TodoService } from '../../core/services/todo.service';
 
-import { Todo } from '../../../shared/types/todo.interface';
-import { NavItem } from '../../../shared/types/navItem.type';
+import { Todo } from '../../shared/types/todo.interface';
+import { NavItem } from '../../shared/types/navItem.type';
 
 
 @Component({

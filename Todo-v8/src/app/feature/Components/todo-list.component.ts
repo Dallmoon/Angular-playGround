@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Todo } from '../../../shared/types/todo.interface';
-import { NavItem } from '../../../shared/types/navItem.type';
+import { Todo } from '../../shared/types/todo.interface';
+import { NavItem } from '../../shared/types/navItem.type';
 import { FormsModule } from '@angular/forms';
 
 @Component({
